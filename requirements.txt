@@ -47,5 +47,5 @@ pySmartDL
 validators
 youtube_dl
 google_trans_new
-yaml
+PyYAML
 #googletrans
