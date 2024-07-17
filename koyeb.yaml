@@ -11,3 +11,19 @@ services:
     branch: main # optional (defaults to master)
     numInstances: 1 # optional (defaults to 1)
     healthCheckPath: /
+    version: "1.0"
+
+services:
+  bot:
+    image: your-docker-image:latest
+    command: python -m SaitamaRobot
+    environment:
+      TELEGRAM_TOKEN: 6834532674:AAEpAlwzL84xk7Y6sDpfHIoyGFVrYQlisNs
+      DATABASE_URL: postgres://wvatpcti:yWSVf-Xw81LfKRXBgZTeHPtX9iC8qYXr@bubble.db.elephantsql.com/wvatpcti
+    ports:
+      - "80:80"
+    instances: 1
+    scaling:
+      min: 1
+      max: 3
+
