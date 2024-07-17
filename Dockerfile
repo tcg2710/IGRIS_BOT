@@ -1,5 +1,5 @@
 # We're using Debian Slim Buster image
-FROM python:3.8.5-slim-buster
+FROM python:3.8.18-slim-buster
 
 ENV PIP_NO_CACHE_DIR 1
 
@@ -63,6 +63,8 @@ RUN apt update && apt upgrade -y && \
 
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
+pip install --upgrade pip setuptools
+
 
 # Copy Python Requirements to /root/SaitamaRobot
 RUN git clone -b shiken https://github.com/AnimeKaizoku/SaitamaRobot /root/SaitamaRobot
@@ -75,6 +77,10 @@ ENV PATH="/home/bot/bin:$PATH"
 
 # Install requirements
 RUN pip3 install -U -r requirements.txt
+
+python -m venv myenv
+source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
+
 
 # Starting Worker
 CMD ["python3","-m","SaitamaRobot"]
