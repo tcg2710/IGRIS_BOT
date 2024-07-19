@@ -1,7 +1,3 @@
----
-services:
-  - type: web
-    name: dndububot
     env: python
     startCommand: python3 -m SaitamaRobot
     buildCommand: pip3 install -U -r requirements.txt
