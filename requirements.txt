@@ -103,3 +103,4 @@ youtube_search_python
 yt-dlp
 zalgo-text
 #ǫ ʀᴇ sᴀʟᴇ ɢᴀʏ ᴋʏ ᴅᴇᴋ ʀᴀ ʜ ʏᴀ 
+h11>=0.16.0 # not directly required, pinned by Snyk to avoid a vulnerability
