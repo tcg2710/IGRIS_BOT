@@ -8,7 +8,6 @@ cachetools
 configparser
 countryinfo
 Cython>=0.29.36
-coffeehouse
 CurrencyConverter
 emoji
 feedparser
