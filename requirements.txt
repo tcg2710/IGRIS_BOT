@@ -46,3 +46,6 @@ wikipedia==1.4.0
 xmlrpclib==1.0.1
 youtube_dl==2021.12.17
 youtube_search==2.1.2
+requests>=2.32.4 # not directly required, pinned by Snyk to avoid a vulnerability
+setuptools>=78.1.1 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
