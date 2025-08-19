@@ -4,10 +4,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-    routes:
-      - name: webhook
-        type: tcp
-        port: 8080  # Only if your bot uses webhooks (omit if polling)
     env:
       APP_ID: ${APP_ID}
       API_HASH: ${API_HASH}
@@ -15,7 +11,7 @@ services:
       OWNER_ID: ${OWNER_ID}
       STRING_SESSION: ${STRING_SESSION}
       OWNER_USERNAME: ${OWNER_USERNAME}
-      DB_URI: ${DATABASE_URL}
+      DB_URI: ${DATABASE_URL}   # Make sure config.py uses DB_URI or DATABASE_URL consistently
       MESSAGE_DUMP: ${MESSAGE_DUMP}
       GBAN_LOGS: ${GBAN_LOGS}
       SYS_ADMIN: ${SYS_ADMIN}
@@ -25,7 +21,7 @@ services:
       CASH_API_KEY: ${CASH_API_KEY}
       TIME_API_KEY: ${TIME_API_KEY}
       WALL_API: ${WALL_API}
-      spamwatch_api: ${spamwatch_api}
+      SPAMWATCH_API: ${SPAMWATCH_API}
       SPAMMERS: ${SPAMMERS}
       LASTFM_API_KEY: ${LASTFM_API_KEY}
       CF_API_KEY: ${CF_API_KEY}
