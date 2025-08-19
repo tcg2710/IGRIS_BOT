@@ -1,12 +1,13 @@
 name: saitamarobot
 services:
   - name: saitama-worker
-    dockerfile: Dockerfile
-    build_dir: .
+    build:
+      dockerfile: Dockerfile
+      context: .
     routes:
       - name: webhook
         type: tcp
-        port: 8080  # Only if your bot uses webhooks (can omit if polling)
+        port: 8080  # Only if your bot uses webhooks (omit if polling)
     env:
       APP_ID: ${APP_ID}
       API_HASH: ${API_HASH}
