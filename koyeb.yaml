@@ -1,4 +1,5 @@
 services:
-  - name: mybot
+  - name: igris-bot
+    dockerfile: Dockerfile
     env:
-      MY_KEY: "myvalue"
+      PYTHONUNBUFFERED: "1"
