@@ -1,32 +1,37 @@
-FROM python:3.10.4-slim-buster
-RUN apt update && apt upgrade -y
-RUN apt-get -y install git
-RUN apt-get install -y wget python3-pip curl bash neofetch ffmpeg software-properties-common
+# Use Python 3.11 slim image (lighter and more modern than 3.10-buster)
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    wget \
+    curl \
+    bash \
+    ffmpeg \
+    gcc \
+    libpq-dev \
+    libffi-dev \
+    libssl-dev \
+    neofetch \
+    && rm -rf /var/lib/apt/lists/*
+
+# Optional: Install Node.js (if required by your bot)
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
+
+# Copy requirements and install Python deps
 COPY requirements.txt .
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y nodejs
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
+    && pip install --no-cache-dir -r requirements.txt
+
+# Copy project files
 COPY . .
-RUN pip3 install wheel
-RUN pip3 install --no-cache-dir -U -r requirements.txt
-COPY start /start
-CMD ["/bin/bash", "/start"]
-# Pypi package Repo upgrade
-RUN pip3 install --upgrade pip setuptools
-pip install --upgrade pip setuptools
 
+# Expose port (only required if using webhooks)
+EXPOSE 8080
 
-# Copy Python Requirements to /root/SaitamaRobot
-RUN git clone -b shiken https://github.com/AnimeKaizoku/SaitamaRobot /root/SaitamaRobot
-WORKDIR /root/SaitamaRobot
-
-#Copy config file to /root/SaitamaRobot/SaitamaRobot
-COPY ./SaitamaRobot/sample_config.py ./SaitamaRobot/config.py* /root/SaitamaRobot/SaitamaRobot/
-
-ENV PATH="/home/bot/bin:$PATH"
-
-python -m venv myenv
-source myenv/bin/activate  # On Windows use: myenv\Scripts\activate
-
-
-# Starting Worker
-CMD ["python3","-m","SaitamaRobot"]
+# Default run command
+CMD ["python", "-m", "SaitamaRobot"]
