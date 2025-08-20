@@ -4,7 +4,7 @@ services:
   worker:
     build: .
     environment:
-      APP_ID: "${API_ID}"
+      APP_ID: "${APP_ID}"
       API_HASH: "${API_HASH}"
       TOKEN: "${TOKEN}"
       OWNER_ID: "${OWNER_ID}"
@@ -20,9 +20,10 @@ services:
       CASH_API_KEY: "${CASH_API_KEY}"
       TIME_API_KEY: "${TIME_API_KEY}"
       WALL_API: "${WALL_API}"
-      spamwatch_api: "${spamwatch_api}"
+      SPAMWATCH_API: "${SPAMWATCH_API}"
       SPAMMERS: "${SPAMMERS}"
       LASTFM_API_KEY: "${LASTFM_API_KEY}"
       CF_API_KEY: "${CF_API_KEY}"
       BOT_API_URL: "${BOT_API_URL}"
       BOT_API_FILE_URL: "${BOT_API_FILE_URL}"
+    command: python3 -m SaitamaRobot
