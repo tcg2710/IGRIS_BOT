@@ -53,3 +53,4 @@ youtube_dl
 youtube_search
 youtube_search_python
 zalgo-text
+h2>=4.3.0 # not directly required, pinned by Snyk to avoid a vulnerability
